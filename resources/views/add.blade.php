@@ -20,7 +20,7 @@
       color: white;
     }
 </style>
-@section('title', 'edit.blade.php')
+@section('title', 'add.blade.php')
 
 @section('content')
 @if (count($errors) > 0)
@@ -30,25 +30,17 @@
     {{$error}}
   </li>
   @endforeach
-  </ul>
-  @endif
-<form action="/edit" method="POST">
+</ul>
+@endif
+<form action="/add" method="post">
   <table>
     @csrf
-    <tr>
-      <th>
-        id
-      </th>
-      <td>
-        <input type="text" name="id" value="{{$form->id}}">
-      </td>
-    </tr>
     <tr>
       <th>
         name
       </th>
       <td>
-        <input type="text" name="name" value="{{$form->name}}">
+        <input type="text" name="name">
       </td>
     </tr>
     <tr>
@@ -56,7 +48,7 @@
         age
       </th>
       <td>
-        <input type="text" name="age" value="{{$form->age}}">
+        <input type="text" name="age">
       </td>
     </tr>
     <tr>
@@ -64,7 +56,7 @@
         nationality
       </th>
       <td>
-        <input type="text" name="nationality" value="{{$form->nationality}}">
+        <input type="text" name="nationality">
       </td>
     </tr>
     <tr>
@@ -72,7 +64,6 @@
       <td>
         <button>送信</button>
       </td>
-    </tr>
   </table>
 </form>
 @endsection
