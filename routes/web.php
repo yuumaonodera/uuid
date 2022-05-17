@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,21 +13,15 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', [AuthorController::class, 'index']);
-Route::get('/find', [AuthorController::class, 'find']);
-Route::get('/find', [AuthorController::class, 'search']);
-Route::get('/author/[author]', [AuthorController::class,  'bind']);
-Route::get('/add', [AuthorController::class, 'add']);
-Route::post('/add', [AuthorController::class, 'create']);
-Route::get('/ebit', [AuthorController::class, 'ebit']);
-Route::get('/ebit', [AuthorController::class, 'update']);
-Route::get('/delete', [AuthorController::class, 'delete']);
-Route::post('/delete', [AuthorController::class, 'remove']);
-
-Route::prefix('book')->group(function() {
-  Route::get('/', [BookController::class, 'index']);
-  Route::get('/add', [BookController::class, 'add']);
-  Route::get('/add', [BookController::class, 'create']);
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/relation', [AuthorController::class, 'ralate']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/auth', [AuthorController::class, 'check']);
+Route::post('/auth', [AuthorController::class, 'checkUser']);
+
+require __DIR__.'/auth.php';

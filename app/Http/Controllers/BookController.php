@@ -20,4 +20,8 @@ class BookController extends Controller
         Book::create($form);
         return redirect('/book');
     }
+    public function index(Request $request){
+        $items = BOOK::width('author')->get();
+        return view('book.index', ['items'=>$items]);
+    }
 }
