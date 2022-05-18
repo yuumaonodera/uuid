@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorCOntroller;
 use App\Model\Person;
 use App\Models\Product;
@@ -54,3 +55,7 @@ Route::get('uuid', function() {
         echo $product, '<br>';
     }
 });
+
+Route::get('fill', [BookController::class, 'fillBook']);
+Route::get('create', [BookController::class, 'createBook']);
+Route::get('insert', [BookController::class, 'insertBook']);

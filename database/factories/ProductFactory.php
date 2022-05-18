@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Model\Product;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -13,7 +13,7 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'rpice' => $this->faker->randomNumber,
+            'price' => $this->faker->randomNumber,
             'uuid' => $this->faker->uuid
         ];
     }
