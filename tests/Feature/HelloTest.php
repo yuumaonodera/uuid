@@ -5,32 +5,23 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\User;
+use App\Models\User;
 
 class HelloTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testHello()
+    use RefreshDatabase;
+
+    public function testHeloo()
     {
-        $this->assertTrue(true);
-
-        $response = $this->get('/');
-        $response->assertStatus(200);
-
-        $response = $this->get('/no_route');
-        $response->assertStatus(404);
-
-        $arr = [];
-        $this->assertEmpty($arr);
-
-        $txt = "Hello World";
-        $this->assertEquals('Hello World', $txt);
-
-        $n = random_int(0, 100);
-        $this->assertLessThan(100, $n);
+        User::factory()->create([
+            'name'=>'aaa',
+            'email'=>'bbb@cc.com',
+            'password'=>'test12345'
+        ]);
+        $this->assertDataseHas('users',[
+            'name'=>'aaa',
+            'email'=>'bbb@ccc.com',
+            'password'=>'test12345'
+        ]);
     }
 }
